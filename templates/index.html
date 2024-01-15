@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <link rel="stylesheet" href="./style/style.css">
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погода в реальном времени</title>
+    <style>
+        body {
+            font-family: 'Overpass', sans-serif;
+            text-align: center;
+        }
+
+        .weather {
+            margin-top: 20px;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #FFF;
+            text-shadow: -1px 2px 0px rgba(0, 0, 0, 0.10);
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+
+        body {
+            background: var(--linear-blue-BG, linear-gradient(192deg, #47BFDF 0%, #4A91FF 100%)) no-repeat;
+            height: 100vh;
+        }
+        h1{
+            color: #FFF;       
+            text-shadow: -1px 2px 0.6px rgba(0, 0, 0, 0.10);
+            font-size: 30px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+        .vvod{
+            color: #FFF;
+            text-shadow: -2px 3px 1px rgba(0, 0, 0, 0.10);
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+        .temp{
+            color: #FFF;
+text-shadow: -4px 8px 50px rgba(0, 0, 0, 0.10);
+font-size: 100px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Погода в {{ city }}e</h1>
+        <form method="POST">
+            <label for="city" class="vvod">Введите город: </label>
+            <input type="text" id="city" name="city" required>
+            <button type="submit">Получить погоду</button>
+        </form>
+        
+        <div class="weather">
+            {% if weather_state == 'Snow' %}
+            Снег
+            {% elif weather_state == 'Rain' %}
+            Дождь
+            {% elif weather_state == 'Clouds' %}
+            Облачно
+            {% elif weather_state == 'Clear' %}
+            Ясно
+            {% else %}
+            {{ weather_state }}
+            {% endif %}
+            <p ><div class="temp">{{ temperature }}°</div></p>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
